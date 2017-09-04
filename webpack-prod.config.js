@@ -3,17 +3,7 @@ const webpack = require('webpack')
 
 module.exports = {
 
-    entry: [
-        'webpack-dev-server/client?http://localhost:3000',
-        'webpack/hot/only-dev-server',
-        'babel-polyfill',
-        path.resolve(__dirname, 'index.js')
-    ],
-
-    devServer: {
-        inline: true,
-        port: 3000
-    },
+    entry: path.resolve(__dirname, 'index.js'),
 
     resolve: {
         alias: {
@@ -23,6 +13,11 @@ module.exports = {
             Reducer: path.resolve(__dirname, 'reducers/'),
             Style: path.resolve(__dirname, 'style')
         }
+    },
+
+    output: {
+        path: path.resolve(__dirname, 'dist'),
+        filename: 'bundle.js'
     },
 
     module: {

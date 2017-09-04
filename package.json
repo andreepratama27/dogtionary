@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --inline --hot"
+    "dev": "webpack-dev-server --inline --hot",
+    "build": "webpack --config ./webpack-prod.config.js"
   },
   "keywords": [],
   "author": "",
