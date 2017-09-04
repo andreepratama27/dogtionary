@@ -4,6 +4,7 @@ import { GridList, GridTile } from 'material-ui/GridList'
 import Subheader from 'material-ui/Subheader'
 import LazyLoad from 'react-lazyload'
 import BoxGridTile from 'Component/BoxGridTile'
+import PlaceholderComponent from 'Component/PlaceholderComponent'
 
 class BrowseComponent extends Component {
 
@@ -33,7 +34,7 @@ class BrowseComponent extends Component {
           <Subheader>Breed : <b>{match.params.type}</b></Subheader>
           {
             dogs.map((v,key) => (
-              <LazyLoad key={v} height={200}>
+              <LazyLoad key={v} height={200} placeholder={ <PlaceholderComponent /> }>
                 <GridTile>
                   <img src={v} />
                 </GridTile>
