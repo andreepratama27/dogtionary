@@ -18,6 +18,11 @@ const AppContainer: React.FC<IAppContainer> = ({ children }) => {
         <Text fontWeight="bold">Dogger</Text>
       </Flex>
       {children}
+      <Box width="100%" sx={{ position: "absolute", bottom: 0 }}>
+        <Flex bg="black" p={3} justifyContent="center" alignItems="center">
+          <Text fontWeight="bold">Footer</Text>
+        </Flex>
+      </Box>
     </Box>
   );
 };

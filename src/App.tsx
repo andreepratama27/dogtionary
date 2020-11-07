@@ -1,11 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Box, Card, Flex, Text, Image, Heading } from "rebass";
 import { ThemeProvider } from "emotion-theming";
 import { AppWrapper } from "./components/atoms";
-// import preset from "@rebass/preset";
+import httpClient from "./utils/httpClient";
+import RandomDog from "./components/molecules/RandomDog";
 const theme = {};
 
 function App() {
+  useEffect(() => {
+    const fetchApi = async () => {
+      try {
+        const response = await httpClient().get("/breeds/list");
+        console.log(response);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchApi();
+  }, []);
+
   return (
     <ThemeProvider theme={theme}>
       <AppWrapper>
@@ -14,18 +28,11 @@ function App() {
             <Text m="0 0 16px 0">Random Dogs</Text>
 
             <Flex dir="row">
-              <Card width={1 / 2} m="0 16px 0 0">
-                <Image
-                  src="https://placehold.it/300x300"
-                  sx={{ borderRadius: 8 }}
-                />
-              </Card>
-              <Card width={1 / 2} m="0 16px 0 0">
-                <Image
-                  src="https://placehold.it/300x300"
-                  sx={{ borderRadius: 8 }}
-                />
-              </Card>
+              {Array(3)
+                .fill("")
+                .map((item, key) => (
+                  <RandomDog key={key} />
+                ))}
             </Flex>
           </Flex>
 
@@ -33,7 +40,7 @@ function App() {
             <Text m="0 0 16px 0">Dogs Category</Text>
 
             <Flex dir="row" justifyContent="space-between">
-              {Array(4)
+              {Array(5)
                 .fill("")
                 .map((v) => (
                   <Card width={140} height={140} m="0 16px 0 0">
